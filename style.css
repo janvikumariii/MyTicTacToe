@@ -84,6 +84,9 @@ nav ul li{
     font-weight: bold;
 }
 @media screen and (max-width:950px) {
+    nav ul li{
+        cursor: pointer;
+    }
     .gameContainer{
         flex-wrap: wrap;
     }
