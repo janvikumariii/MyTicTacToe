@@ -16,6 +16,7 @@ nav{
 }
 nav ul li{
     list-style-type: none;
+    cursor: pointer;
 }
 .gameContainer{
     display: flex;

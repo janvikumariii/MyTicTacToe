@@ -1,14 +1,15 @@
 let audioTurn=new Audio("ting.mp3")
+let sound=new Audio('song10.mpeg')
 let gameOver=new Audio("gameover.mp3")
 let boxes = document.getElementsByClassName("box");
 let gameover=false;
-let sound = new Audio('song10.mpeg')
 let turn ="X"
 
 
 const changeTurn=()=>{
     return turn==="X"?"0":"X"
 }
+
 
 const checkWin=()=>{
     let boxtext = document.getElementsByClassName('boxtext');
@@ -35,8 +36,7 @@ const checkWin=()=>{
     })
 }
 
-sound.play();
-sound.volume=0.3;
+
 Array.from(boxes).forEach(element=>{
     let boxtext=element.querySelector('.boxtext');
     element.addEventListener('click',()=>{
@@ -63,6 +63,18 @@ reset.addEventListener('click', ()=>{
     document.querySelector(".line").style.width = "0vw";
     document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
     document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "0px"
+})
+
+audio.addEventListener('click',()=>{
+    if(sound.paused||sound.currentTime<=0){
+        sound.play();
+        sound.volume=0.2;
+    }
+    else{
+        sound.pause();
+
+    }
+    
 })
 
 
