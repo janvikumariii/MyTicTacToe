@@ -31,9 +31,23 @@ const checkWin=()=>{
             document.querySelector(".line").style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`
             document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "200px";
             document.querySelector(".line").style.width = "20vw";
-            gameOver.volume=1.8;
+            gameOver.volume=0.9;
+            setTimeout(rest,5000)
+            
         }
     })
+}
+
+const rest=()=>{
+    let boxtexts = document.querySelectorAll('.boxtext');
+    Array.from(boxtexts).forEach(element => {
+        element.innerText = ""
+    });
+    turn = "X"; 
+    gameover = false
+    document.querySelector(".line").style.width = "0vw";
+    document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
+    document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "0px"
 }
 
 
@@ -43,9 +57,10 @@ Array.from(boxes).forEach(element=>{
         if(boxtext.innerText===''){
         boxtext.innerText=turn;
         turn= changeTurn();
-        audioTurn.play();
-        audioTurn.volume=0.2;
+        sound.play();
+        sound.volume=0.1;
         checkWin();
+        
          if (!gameover){
             document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
         } 
@@ -66,14 +81,7 @@ reset.addEventListener('click', ()=>{
 })
 
 audio.addEventListener('click',()=>{
-    if(sound.paused||sound.currentTime<=0){
-        sound.play();
-        sound.volume=0.2;
-    }
-    else{
         sound.pause();
-
-    }
     
 })
 
